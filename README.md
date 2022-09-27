@@ -1,4 +1,4 @@
-# puzzel_cheat_sheet
+# Puzzel Cheat Sheet
 
 ## Easy printing
 
