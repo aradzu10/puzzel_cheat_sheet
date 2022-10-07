@@ -16,9 +16,12 @@ void print_impl(const std::string_view& name, const Arg1& arg1)
 template <typename Arg1, typename... Args>
 void print_impl(const std::string_view& names, const Arg1& arg1, const Args&... args)
 {
-    const char* comma = strchr(names.data() + 1, ',');
+    const char* comma = strchr(names.data(), ',');
     size_t name_size(comma - names.data());
     print_impl(std::string_view(names.data(), name_size), arg1);
+    comma++; // Skip `,`.
+    while (*comma == ' ') { comma++; }
+    std::cout << ", ";
     print_impl(comma, args...);
 }
 
