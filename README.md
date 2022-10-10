@@ -25,6 +25,9 @@ void print_impl(const std::string_view& names, const Arg1& arg1, const Args&... 
     print_impl(comma, args...);
 }
 
-#define PRINT(...) print_impl(#__VA_ARGS__, __VA_ARGS__); std::cout << ";\n";
+#define PRINT_N_LINE(...) \
+    std::cout << __FILE__ << ":" << __LINE__ << " "; \
+    print_impl(#__VA_ARGS__, __VA_ARGS__);
+#define PRINT(...) PRINT_N_LINE(__VA_ARGS__); std::cout << ";\n";
 // #define PRINT(...)
 ```
